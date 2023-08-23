@@ -136,7 +136,7 @@ void zero_state(state *st)
   st->batery = 0;
   st->mode = 0;
 }
-
+/*
 bool send_state(state *s)
 {
   radio.stopListening();
@@ -158,6 +158,8 @@ bool send_state(state *s)
   return err;
 }
 
+
+
 bool receive_state(state *s)
 {
 
@@ -170,7 +172,7 @@ bool receive_state(state *s)
   return false;
 }
 
-
+*/
 
 
 
@@ -194,6 +196,7 @@ int unpack_control(char *buf, control *c)
   return off;
 }
 
+/*
 bool send_control(control *c)
 {
   radio.stopListening();
@@ -204,7 +207,7 @@ bool send_control(control *c)
 
   radio.startListening();
   return r;
-}
+}*/
 
 bool receive_control(control *c)
 {

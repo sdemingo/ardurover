@@ -55,7 +55,7 @@ void init_base_radio()
   //open base-rover pipe (ctl pipe)
   radio.openWritingPipe(pipes[1]);
 
-  radio.startListening();
+  //radio.startListening();
 
   side = BASE_SIDE;
   reset_stats();
@@ -206,6 +206,7 @@ bool send_control(control *c)
   return r;
 }
 
+/*
 bool receive_control(control *c)
 {
   if (radio.available())
@@ -216,3 +217,4 @@ bool receive_control(control *c)
   }
   return false;
 }
+*/

@@ -8,6 +8,7 @@
 
 state stmsg;
 control ctlmsg;
+bool check;
 
 /*
   Rover  
@@ -15,7 +16,7 @@ control ctlmsg;
 
 void setup()
 {
-  Serial.begin(115200);
+  Serial.begin(9600);
   delay(1000);
 
   init_motors();
@@ -27,7 +28,12 @@ void setup()
 void loop()
 {
   //ctlmsg.steering = STOP;
-  receive_control(&ctlmsg);
+  check=receive_control(&ctlmsg);
+  if (check){
+    Serial.println("Recibo mensaje");
+    Serial.println(ctlmsg.steering);
+  }
+
   
   /*
     Control de avance
@@ -38,6 +44,7 @@ void loop()
     //run_motor(EN_MOTOR2, 1);
   }
 
+/*
   if (ctlmsg.steering == BACKWARD)
   {
     run_motor(EN_MOTOR1, 0);
@@ -54,7 +61,7 @@ void loop()
   /*
     Control de dirección
   */
-
+/*
   if (ctlmsg.course == TURN_RIGHT)
   {
     run_motor(EN_MOTOR2, 0);
@@ -71,6 +78,6 @@ void loop()
   {
     stop_motor(EN_MOTOR2);
   }
-
+*/
 
 }

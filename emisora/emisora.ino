@@ -20,7 +20,7 @@ byte printed_ctl = 0;
 // PROGRAMA PRINCIPAL
 
 void setup(void) {
-  Serial.begin(115200);
+  Serial.begin(9600);
   delay(1000);
 
   lcd.init();
@@ -36,7 +36,7 @@ void setup(void) {
   */
 
   //zero_state(&st);
-  //init_base_radio();
+  init_base_radio();
   delay(1000);
 
   ctlmsg.course = STOP;
@@ -47,12 +47,9 @@ void loop(void) {
   int Xvalue = 0;
   int Yvalue = 0;
 
-  /*
-  if (receive_state(&st))
-  {
-    // hacer algo con estado recibido
-  }
-  */
+
+
+/*
 
   Xvalue = analogRead(pinJoyX);
   delay(100);  //es necesaria una pequeña pausa entre lecturas analógicas
@@ -96,13 +93,32 @@ void loop(void) {
     if (ctlmsg.steering == TURN_LEFT) {
       lcd.print("Giro Izquierda  ");
     }
-
     printed_ctl == ctlmsg.steering;
   }
+  */
 
-  // ---- ENVIAMOS CONTROL DEL ROVER ---
+  // ---- ENVIAMOS CONTROL DE EJEMPLO AL ROVER ---
 
-  //Serial.println(ctlmsg.steering);
+  bool check;
 
-  //send_control(&ctlmsg);
+  delay(2000);
+  ctlmsg.steering=FORWARD;
+  Serial.println("Envio mensaje de control");
+  Serial.println(ctlmsg.steering);
+  lcd.print("Envio!!!        ");
+  
+
+
+  check=send_control(&ctlmsg);
+  if (check == true){
+    lcd.print("Fue bien        ");
+    Serial.println("ok");
+  }else{
+    lcd.print("Fue mal         ");
+    Serial.println("error");
+  }
+
+
+  delay(1000);
+
 }
