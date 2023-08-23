@@ -16,6 +16,7 @@ LiquidCrystal_I2C lcd(0x27, 16, 2);  // LCD addr: 0x27
 const int pinJoyY = A0;
 const int pinJoyX = A1;
 byte printed_ctl = 0;
+bool check;
 
 // PROGRAMA PRINCIPAL
 
@@ -39,17 +40,13 @@ void setup(void) {
   init_base_radio();
   delay(1000);
 
-  ctlmsg.course = STOP;
+  ctlmsg.steering = STOP;
   lcd.print("Parado          ");
 }
 
 void loop(void) {
   int Xvalue = 0;
   int Yvalue = 0;
-
-
-
-/*
 
   Xvalue = analogRead(pinJoyX);
   delay(100);  //es necesaria una pequeña pausa entre lecturas analógicas
@@ -95,30 +92,22 @@ void loop(void) {
     }
     printed_ctl == ctlmsg.steering;
   }
-  */
+  
 
   // ---- ENVIAMOS CONTROL DE EJEMPLO AL ROVER ---
 
-  bool check;
 
-  delay(2000);
-  ctlmsg.steering=FORWARD;
   Serial.println("Envio mensaje de control");
   Serial.println(ctlmsg.steering);
-  lcd.print("Envio!!!        ");
   
-
-
   check=send_control(&ctlmsg);
   if (check == true){
-    lcd.print("Fue bien        ");
     Serial.println("ok");
   }else{
-    lcd.print("Fue mal         ");
     Serial.println("error");
   }
 
 
-  delay(1000);
+  //delay(1000);
 
 }

@@ -34,13 +34,13 @@ bool send_control(control *c);
 bool receive_control(control *c);
 
 // Rover commands
-const byte STOP = 0;
-const byte FORWARD = 1;
-const byte BACKWARD = 2;
+const byte STOP = 1;
+const byte FORWARD = 2;
+const byte BACKWARD = 3;
 
-const byte STRAIGHT = 3;
-const byte TURN_RIGHT = 4;
-const byte TURN_LEFT = 5;
+const byte STRAIGHT = 4;
+const byte TURN_RIGHT = 5;
+const byte TURN_LEFT = 6;
 
 void init_rover_radio();
 void init_base_radio();

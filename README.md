@@ -11,7 +11,7 @@ Ambos proyectos dependen de la librería [RF24](http://nRF24.github.io/RF24) par
 Lista de tareas pendientes:
 
 - [x] mover ambos motores con el controlador
-- [ ] conectar emisora con la placa de control
-- [ ] mover ambos motores tras el envío de comandos de la emisora
+- [x] conectar emisora con la placa de control
+- [x] mover ambos motores tras el envío de comandos de la emisora
 - [ ] montar placa de control en chasis de oruga
 
